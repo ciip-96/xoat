@@ -536,17 +536,17 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-812"/>
         <source>&amp;Dashboard</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Resumen</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&amp;Receive</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Recibir</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&amp;Send</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Enviar</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -606,7 +606,7 @@ Dirección: %4
     <message>
         <location line="+9"/>
         <source>Wallet is &lt;b&gt;not encrypted&lt;/b&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Su Billetera no está encriptada</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -910,7 +910,7 @@ Puede variar + / - 1 Byte por entrada.</translation>
         <location line="+1"/>
         <source>This label turns red, if any recipient receives an amount smaller than %1.
 
- This means a fee of at least %2 is required. 
+ This means a fee of at least %2 is required.
 
  Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
         <translation>Esta etiqueta se convierte en rojo, si cualquier recipiente recibe una cantidad menor que %1.
