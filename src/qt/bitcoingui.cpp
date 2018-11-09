@@ -187,7 +187,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         QString curStyle = qApp->style()->metaObject()->className();
         if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
         {
-            progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
+            progressBar->setStyleSheet("QProgressBar { background-color: #93345D; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
         }
     }
 
@@ -228,33 +228,38 @@ BitcoinGUI::~BitcoinGUI()
 void BitcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
-
-    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Dashboard"), this);
-    overviewAction->setToolTip(tr("Show general overview of wallet"));
+    QString tooltipTitleString = "";
+    overviewAction = new QAction(QIcon(":/icons/overview"), tr(""), this);
+    tooltipTitleString = tr("&Dashboard") + ": " +  tr("Show general overview of wallet");
+    overviewAction->setToolTip(tooltipTitleString);
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
+    receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr(""), this);
+    tooltipTitleString = tr("&Receive") + ": " +  tr("Show the list of addresses for receiving payments");
+    receiveCoinsAction->setToolTip(tooltipTitleString);
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(receiveCoinsAction);
 
-    sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setToolTip(tr("Send coins to a BlackCoin address"));
+    sendCoinsAction = new QAction(QIcon(":/icons/send"), tr(""), this);
+    tooltipTitleString = tr("&Send") + ": " +  tr("Show the list of addresses for receiving payments");
+    sendCoinsAction->setToolTip(tooltipTitleString);
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(sendCoinsAction);
 
-    historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
-    historyAction->setToolTip(tr("Browse transaction history"));
+    historyAction = new QAction(QIcon(":/icons/history"), tr(""), this);
+    tooltipTitleString = tr("&Transactions") + ": " +  tr("Browse transaction history");
+    historyAction->setToolTip(tooltipTitleString);
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
 
-    addressBookAction = new QAction(QIcon(":/icons/address-book"), tr("&Address Book"), this);
-    addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
+    addressBookAction = new QAction(QIcon(":/icons/address-book"), tr(""), this);
+    tooltipTitleString = tr("&Address Book") + ": " +  tr("Edit the list of stored addresses and labels");
+    addressBookAction->setToolTip(tooltipTitleString);
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
@@ -352,7 +357,7 @@ static QWidget* makeToolBarSpacer()
 {
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-    spacer->setStyleSheet(fUseBlackTheme ? "QWidget { background: rgb(30,32,36); }" : "QWidget { background: none; }");
+    spacer->setStyleSheet(fUseBlackTheme ? "QWidget { background: none; }" : "QWidget { background: none; }");
     return spacer;
 }
 
@@ -365,9 +370,9 @@ void BitcoinGUI::createToolBars()
     if (fUseBlackTheme)
     {
         QWidget* header = new QWidget();
-        header->setMinimumSize(160, 116);
+        header->setMinimumSize(50, 116);
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        header->setStyleSheet("QWidget { background-color: rgb(24,26,30); background-repeat: no-repeat; background-image: url(:/images/header); background-position: top center; }");
+        header->setStyleSheet("QWidget { background-color: none; background-repeat: no-repeat; background-image: url(:/images/header); background-position: top center; }");
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
