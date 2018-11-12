@@ -122,11 +122,13 @@ OverviewPage::OverviewPage(QWidget *parent) :
     if (fUseBlackTheme)
     {
         const char* whiteLabelQSS = "QLabel { color: rgb(255,255,255); }";
-        ui->labelBalance->setStyleSheet(whiteLabelQSS);
-        ui->labelStake->setStyleSheet(whiteLabelQSS);
-        ui->labelUnconfirmed->setStyleSheet(whiteLabelQSS);
-        ui->labelImmature->setStyleSheet(whiteLabelQSS);
-        ui->labelTotal->setStyleSheet(whiteLabelQSS);
+        const char* blackLabelQSS = "QLabel { color: rgb(20,20,20); }";
+
+        ui->labelBalance->setStyleSheet(blackLabelQSS);
+        ui->labelStake->setStyleSheet(blackLabelQSS);
+        ui->labelUnconfirmed->setStyleSheet(blackLabelQSS);
+        ui->labelImmature->setStyleSheet(blackLabelQSS);
+        ui->labelTotal->setStyleSheet(blackLabelQSS);
     }
 }
 

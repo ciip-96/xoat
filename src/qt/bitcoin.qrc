@@ -1,4 +1,4 @@
-<!DOCTYPE RCC><RCC version="1.0">
+<RCC>
     <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/novacoin-80.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
@@ -61,7 +61,7 @@
         <file alias="staking_on">res/icons/black/staking_on.png</file>
     </qresource>
     <qresource prefix="/css">
-        <file alias="xoat_light">res/css/xoat_light.css</file>
+        <file>res/css/xoat_light.css</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>

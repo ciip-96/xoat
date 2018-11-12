@@ -500,11 +500,80 @@ namespace GUIUtil {
 
     }
 
+    void SetStyle(QApplication& app)
+    {
+        QString LookAndFeel = "Fusion";//default theme
+        #ifdef WIN32
+                LookAndFeel = "Windows";
+        #else
+                LookAndFeel = "Fusion";
+        #endif
+        app.setStyle(QStyleFactory::create(LookAndFeel));//this line will set the look and feel :v
+
+
+        app.setStyleSheet(
+                    "QWidget        { background: rgb(255,255,255); }"
+                    "QFrame         { border: none; }"
+
+                    "QToolBar       { background: rgb(255, 255, 255); border: none; }"
+                    "QToolButton    { background: rgb(255, 255, 255); color: rgb(116, 122, 134); border: none; border-left-color: rgb(255, 255, 255); border-left-style: solid; border-left-width: 6px; margin-top: 8px; margin-bottom: 8px; }"
+                    "QToolButton:checked { color: rgb(134, 62, 101); border: none; border-left-color: rgb(178, 87, 104); border-left-style: solid; border-left-width: 5px; }"
+
+                    "QComboBox      { color: rgb(209, 38, 71); }"
+                    "QComboBox QAbstractItemView::item { color: rgb(20, 20, 20);     selection-background-color: rgb(209, 38, 71); }"
+
+                    "QPushButton    { background: rgb(209, 38, 71); color: rgb(255, 255, 255); }"
+                    "QCheckBox      { color: rgb(120,127,139); }"
+                    "QRadioButton   { color: rgb(120,127,139); }"
+
+
+                    "QLineEdit      { background: rgb(212, 218, 213); color: rgb(20, 20, 20); border-color: rgb(61, 61, 61); }"
+                    "QTextEdit      { background: rgb(212, 218, 213); color: rgb(20, 20, 20); }"
+                    "QPlainTextEdit { background: rgb(212, 218, 213); color: rgb(20, 20, 20); }"
+                    "QDoubleSpinBox { background: rgb(212, 218, 213); color: rgb(20, 20, 20); border-color: rgb(61, 61, 61); }"
+
+                    "QMenuBar       { background: rgb(255,255,255); color: rgb(20, 20, 20); }"
+                    "QMenu          { background: rgb(255, 0, 0); color: rgb(222, 222, 222); }"
+                    "QMenu::item:selected { background-color: rgb(47, 150, 214); }"
+                    "QLabel         { color: rgb(120, 127, 139); }"
+                    "QScrollBar     { color: rgb(255,255,255); }"
+
+                    "QTabBar::tab   { color: rgb(120,127,139); border: 1px solid rgb(20, 20, 20); border-bottom: none; padding: 5px; }"
+                    "QTabBar::tab:selected  { background: rgb(255, 255, 255); }"
+                    "QTabBar::tab:!selected { background: rgb(41,133,255); margin-top: 2px; color: rgb(255,255,255); }"
+                    "QTabWidget::pane { border: 1px solid rgb(20,20,20); }"
+
+
+                    "QProgressBar   { color: rgb(209, 38, 71); border-color: rgb(20,20,20); border-width: 3px; border-style: solid; }"
+                    "QProgressBar::chunk { background: rgb(255,255,255); }"
+                    "QTreeView::item { background: rgb(233,2-33,233); color: rgb(212,213,213); }"
+                    "QTreeView::item:selected { background-color: rgb(48,140,198); }"
+                    "QTableView     { background: rgb(66,71,78); color: rgb(212,213,213); gridline-color: rgb(157,160,165); }"
+                    "QHeaderView::section { background: rgb(29,34,39); color: rgb(255,255,255); }");
+
+        app.setStyle(QStyleFactory::create("Fusion"));//this line will set the look and feel :v
+           // QStringList lista =  QStyleFactory::keys();
+            QStringList styles = QStyleFactory::keys();
+            cout <<  "\n Styles: " << endl;
+            for(int i=0 ; i < styles.length() ; i++)
+                cout << styles.at(i).toStdString() << endl;
+
+    }
+
+
     /*
         Xoat Default Theme
     */
     void SetLightThemeQSS(QApplication& app)
     {
+        QString LookAndFeel = "Fusion";//default theme
+        #ifdef WIN32
+                LookAndFeel = "Windows";
+        #else
+                LookAndFeel = "Fusion";
+        #endif
+        app.setStyle(QStyleFactory::create(LookAndFeel));//this line will set the look and feel :v
+
         cout << "Setting CSS to gui." << endl;
         QString styleSheet;
         QString cssName;
@@ -515,14 +584,6 @@ namespace GUIUtil {
             cout << cssName.toStdString() << " opened succesfully."  << endl;
         }
         app.setStyleSheet(styleSheet);
-
-        QString LookAndFeel = "Fusion";//default theme
-        #ifdef WIN32
-                LookAndFeel = "Windows";
-        #else
-                LookAndFeel = "Fusion";
-        #endif
-        app.setStyle(QStyleFactory::create(LookAndFeel));//this line will set the look and feel :v
     }
 } // namespace GUIUtil
 

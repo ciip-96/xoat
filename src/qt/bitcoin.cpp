@@ -238,12 +238,17 @@ int main(int argc, char *argv[])
     app.processEvents();
 
     app.setQuitOnLastWindowClosed(false);
+    cout << "flag 1" << endl;
 
     try
     {
-        if (fUseBlackTheme)
-            //GUIUtil::SetBlackThemeQSS(app); //Blackcoin THEME
-            GUIUtil::SetLightThemeQSS(app);//XOAT THEME
+        if (fUseBlackTheme){
+            cout << "flag 2" << endl;
+            //GUIUtil::SetLightThemeQSS(app);//XOAT THEME
+            GUIUtil::SetStyle(app); //test THEME
+           // GUIUtil::SetLightThemeQSS(app);//XOAT THEME
+
+        }
 
         // Regenerate startup link, to fix links to old versions
         if (GUIUtil::GetStartOnSystemStartup())
