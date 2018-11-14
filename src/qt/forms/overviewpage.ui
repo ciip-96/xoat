@@ -36,7 +36,18 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QWidget" name="widget" native="true">
+        <widget class="QWidget" name="summary" native="true">
+         <property name="styleSheet">
+          <string notr="true">.QWidget#summary{
+	border-image: url(:/images/dashboard_summary) 0 0 0 0 stretch stretch;
+
+}
+.QWidget .QLabel{
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: none;
+}</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -284,6 +295,12 @@
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QWidget" name="widget_2" native="true">
+         <property name="styleSheet">
+          <string notr="true">.QWidget {
+	border-image: url(:/images/dashboard_recenttransactions) 0 0 0 0 stretch stretch;
+
+}</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
