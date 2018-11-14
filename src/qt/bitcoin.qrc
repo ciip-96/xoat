@@ -67,6 +67,9 @@
         <file alias="about">res/images/about.png</file>
         <file alias="splash">res/images/splash3.png</file>
         <file alias="header">res/images/header.png</file>
+        <file alias="overview_background">res/images/overview_background.png</file>
+        <file alias="dashboard_recenttransactions">res/images/dashboard_recenttransactions.png</file>
+        <file alias="dashboard_summary">res/images/dashboard_summary.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="update_spinner">res/movies/update_spinner.mng</file>

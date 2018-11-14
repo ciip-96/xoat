@@ -9,6 +9,6 @@ fi
 open /Users/cbqa/xoat/BlackCoin-Qt.app/
 
 #PID=$(ps -A | grep -m1 BlackCoin-Qt | awk '{print $1}')
-#echo "killed Blackcoin process with code: "
+#echo "killed Xoat process with code: "
 #echo $PID
 #kill -9 $PID

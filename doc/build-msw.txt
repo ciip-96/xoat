@@ -79,6 +79,6 @@ cp *.h miniupnpc/
 BlackCoin
 -------
 DOS prompt:
-cd \blackcoin\src
+cd \xoat\src
 mingw32-make -f makefile.mingw
-strip blackcoind.exe
+strip xoatd.exe

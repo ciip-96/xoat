@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = blackcoin-qt
+TARGET = xoat-qt
 VERSION = 1.2.5.2
 INCLUDEPATH += src src/json src/qt
 QT += network

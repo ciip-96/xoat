@@ -4,13 +4,13 @@ set -e
 
 umask 077
 
-basedir=~/.blackcoin
+basedir=~/.xoat
 dbfile="$basedir/DB_CONFIG"
-cfgfile="$basedir/blackcoin.conf"
+cfgfile="$basedir/xoat.conf"
 
 [ -e "$basedir" ] || mkdir "$basedir"
 
-# Blackcoin does not clean up DB log files by default
+# Xoat does not clean up DB log files by default
 [ -e "$dbfile" ] || echo 'set_flags DB_LOG_AUTOREMOVE' > "$dbfile"
 
-exec /usr/lib/blackcoin/blackcoin-qt "$@"
+exec /usr/lib/xoat/xoat-qt "$@"

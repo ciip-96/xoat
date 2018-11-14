@@ -101,7 +101,7 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. BlackCoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Xoat can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
     {
         // This message can not be translated, as translation is not initialized yet
         // (which not yet possible because lang=XX can be overridden in bitcoin.conf in the data directory)
-        QMessageBox::critical(0, "BlackCoin",
+        QMessageBox::critical(0, "Xoat",
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
@@ -168,12 +168,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    app.setOrganizationName("BlackCoin");
+    app.setOrganizationName("Xoat");
     //XXX app.setOrganizationDomain("");
     if(GetBoolArg("-testnet", false)) // Separate UI settings for testnet
-        app.setApplicationName("BlackCoin-Qt-testnet");
+        app.setApplicationName("Xoat-Qt-testnet");
     else
-        app.setApplicationName("BlackCoin-Qt");
+        app.setApplicationName("Xoat-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
@@ -238,15 +238,14 @@ int main(int argc, char *argv[])
     app.processEvents();
 
     app.setQuitOnLastWindowClosed(false);
-    cout << "flag 1" << endl;
 
     try
     {
-        if (fUseBlackTheme){
-            cout << "flag 2" << endl;
+        if (fUseXoatTheme){
+            cout << "setting theme" << endl;
             //GUIUtil::SetLightThemeQSS(app);//XOAT THEME
-            GUIUtil::SetStyle(app); //test THEME
-           // GUIUtil::SetLightThemeQSS(app);//XOAT THEME
+            //GUIUtil::SetStyle(app); //test THEME
+            GUIUtil::SetLightThemeQSS(app);//XOAT THEME
 
         }
 

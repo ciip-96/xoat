@@ -1,2 +1,2 @@
-debian/bin/blackcoind usr/bin
-src/blackcoind usr/lib/blackcoin
+debian/bin/xoatd usr/bin
+src/xoatd usr/lib/xoat

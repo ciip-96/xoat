@@ -8,7 +8,7 @@
 
 #include <QSettings>
 
-bool fUseBlackTheme;
+bool fUseXoatTheme;
 
 OptionsModel::OptionsModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -46,7 +46,7 @@ void OptionsModel::Init()
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
     nReserveBalance = settings.value("nReserveBalance").toLongLong();
     language = settings.value("language", "").toString();
-    fUseBlackTheme = settings.value("fUseBlackTheme", true).toBool();
+    fUseXoatTheme = settings.value("fUseXoatTheme", true).toBool();
 
     // These are shared with core Bitcoin; we want
     // command-line options to override the GUI settings:
@@ -105,7 +105,7 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
         case CoinControlFeatures:
             return QVariant(fCoinControlFeatures);
         case UseBlackTheme:
-            return QVariant(fUseBlackTheme);
+            return QVariant(fUseXoatTheme);
         default:
             return QVariant();
         }
@@ -186,8 +186,8 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             }
             break;
         case UseBlackTheme:
-            fUseBlackTheme = value.toBool();
-            settings.setValue("fUseBlackTheme", fUseBlackTheme);
+            fUseXoatTheme = value.toBool();
+            settings.setValue("fUseXoatTheme", fUseXoatTheme);
             break;
         default:
             break;

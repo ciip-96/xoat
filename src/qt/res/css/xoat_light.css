@@ -1,7 +1,10 @@
 QWidget {
     background: rgb(255, 255, 255);
-   /* background-image: url(:/images/dashboard_background);*/
 }
+.Qwidget#qw_dashboard {
+    background: url(:/images/overview_background);
+}
+
 QFrame {
     border: none;
 }
@@ -31,6 +34,7 @@ QToolButton:checked {
     border-left-style: solid;
     border-left-width: 5px;
 }
+/*border left top */
 
 /* ComboBox */
 QComboBox {
@@ -111,7 +115,7 @@ QTabBar::tab:selected {
     background: rgb(255, 255, 255);
 } /*changed*/
 
-QTabBar::tab:!selected {
+QTabBar::tab:selected {
     background: rgb(41, 133, 255);
     margin-top: 2px;
     color: rgb(255,255,255);
@@ -130,9 +134,9 @@ QProgressBar {
     border-style: solid;
 } /* frame of status bar*/
 
-/*QProgressBar::chunk {
-    background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 rgb(255, 255, 255), stop:1 rgb(134, 62, 101) );
-}*/
+QProgressBar::chunk {
+    background-color: qlineargradient( x1:0, y1:0, x2:1, y2:0, stop:0 #FFFFFF, stop:1 rgb(134, 62, 101) );
+}
 
 
 /* NO idea */
@@ -157,3 +161,4 @@ QHeaderView::section {
     background: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
 } /*Tableview headers*/
+

@@ -85,7 +85,7 @@ namespace GUIUtil {
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     {
         // NovaCoin: check prefix
-        if(uri.scheme() != QString("blackcoin"))
+        if(uri.scheme() != QString("xoat"))
             return false;
 
         SendCoinsRecipient rv;
@@ -130,13 +130,13 @@ namespace GUIUtil {
 
     bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
     {
-        // Convert blackcoin:// to blackcoin:
+        // Convert xoat:// to xoat:
         //
         //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
         //    which will lower-case it (and thus invalidate the address).
-        if(uri.startsWith("blackcoin://"))
+        if(uri.startsWith("xoat://"))
         {
-            uri.replace(0, 12, "blackcoin:");
+            uri.replace(0, 12, "xoat:");
         }
         QUrl uriInstance(uri);
         return parseBitcoinURI(uriInstance, out);
@@ -280,7 +280,7 @@ namespace GUIUtil {
     #ifdef WIN32
     boost::filesystem::path static StartupShortcutPath()
     {
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "BlackCoin.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Xoat.lnk";
     }
 
     bool GetStartOnSystemStartup()
@@ -362,7 +362,7 @@ namespace GUIUtil {
 
     boost::filesystem::path static GetAutostartFilePath()
     {
-        return GetAutostartDir() / "blackcoin.desktop";
+        return GetAutostartDir() / "xoat.desktop";
     }
 
     bool GetStartOnSystemStartup()
@@ -403,7 +403,7 @@ namespace GUIUtil {
             // Write a bitcoin.desktop file to the autostart directory:
             optionFile << "[Desktop Entry]\n";
             optionFile << "Type=Application\n";
-            optionFile << "Name=BlackCoin\n";
+            optionFile << "Name=Xoat\n";
             optionFile << "Exec=" << pszExePath << " -min\n";
             optionFile << "Terminal=false\n";
             optionFile << "Hidden=false\n";
@@ -424,10 +424,10 @@ namespace GUIUtil {
     HelpMessageBox::HelpMessageBox(QWidget *parent) :
         QMessageBox(parent)
     {
-        header = tr("BlackCoin-Qt") + " " + tr("version") + " " +
+        header = tr("Xoat-Qt") + " " + tr("version") + " " +
             QString::fromStdString(FormatFullVersion()) + "\n\n" +
             tr("Usage:") + "\n" +
-            "  blackcoin-qt [" + tr("command-line options") + "]                     " + "\n";
+            "  xoat-qt [" + tr("command-line options") + "]                     " + "\n";
 
         coreOptions = QString::fromStdString(HelpMessage());
 
@@ -436,7 +436,7 @@ namespace GUIUtil {
             "  -min                   " + tr("Start minimized") + "\n" +
             "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
 
-        setWindowTitle(tr("BlackCoin-Qt"));
+        setWindowTitle(tr("Xoat-Qt"));
         setTextFormat(Qt::PlainText);
         // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
         setText(header + QString(QChar(0x2003)).repeated(50));
@@ -544,8 +544,8 @@ namespace GUIUtil {
                     "QTabWidget::pane { border: 1px solid rgb(20,20,20); }"
 
 
-                    "QProgressBar   { color: rgb(209, 38, 71); border-color: rgb(20,20,20); border-width: 3px; border-style: solid; }"
-                    "QProgressBar::chunk { background: rgb(255,255,255); }"
+                    "QProgressBar   { color: rgb(209, 38, 71); border-color: rgb(20,20,20); border-width: 1px; border-style: solid; }"
+                    "QProgressBar::chunk { background: rgb(209, 38, 71); }"
                     "QTreeView::item { background: rgb(233,2-33,233); color: rgb(212,213,213); }"
                     "QTreeView::item:selected { background-color: rgb(48,140,198); }"
                     "QTableView     { background: rgb(66,71,78); color: rgb(212,213,213); gridline-color: rgb(157,160,165); }"
@@ -577,7 +577,8 @@ namespace GUIUtil {
         cout << "Setting CSS to gui." << endl;
         QString styleSheet;
         QString cssName;
-        cssName = QString(":/css/xoat_light.css");
+        cssName = QString(":/css/res/css/xoat_light.css");
+        cout << " css: " << cssName.toStdString() << endl;
         QFile qFile(cssName);
         if (qFile.open(QFile::ReadOnly)) {
             styleSheet = QLatin1String(qFile.readAll());
