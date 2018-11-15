@@ -145,7 +145,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QWidget *frameBlocks = new QWidget();
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("QWidget { background: none; margin-bottom: 5px; }");
+    frameBlocks->setStyleSheet("QWidget { background: rgb(255, 0, 0); margin-bottom: 5px; }");//"QWidget { background: none; margin-bottom: 5px; }"
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -358,7 +358,8 @@ static QWidget* makeToolBarSpacer()
 {
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-    spacer->setStyleSheet(fUseXoatTheme ? "QWidget { background: none; }" : "QWidget { background: none; }");
+    spacer->setFixedWidth(80);
+    spacer->setStyleSheet(fUseXoatTheme ? "QWidget {  background-color: none;}" : "QWidget { background-color: none; }");
     return spacer;
 }
 
@@ -373,7 +374,7 @@ void BitcoinGUI::createToolBars()
         QWidget* header = new QWidget();
         header->setMinimumSize(50, 116);
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        header->setStyleSheet("QWidget { background-color: none; background-repeat: no-repeat; background-image: url(:/images/header) 0 0 0 0 stretch stretch; background-position: top center; }");
+        header->setStyleSheet("QWidget { background-color: none; background-repeat: no-repeat; background-image: url(:/images/header); background-position: center;}");
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
@@ -388,6 +389,9 @@ void BitcoinGUI::createToolBars()
 
     toolbar->setOrientation(Qt::Vertical);
     toolbar->setMovable(false);
+
+    toolbar->setIconSize(QSize(40, 40));
+    toolbar->setFixedWidth(80);
 
     addToolBar(Qt::LeftToolBarArea, toolbar);
 
