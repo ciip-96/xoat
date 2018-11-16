@@ -6,6 +6,7 @@
  */
 
 #include <QApplication>
+#include <QDebug>
 
 #include "bitcoingui.h"
 
@@ -145,7 +146,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QWidget *frameBlocks = new QWidget();
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("QWidget { background: rgb(255, 0, 0); margin-bottom: 5px; }");//"QWidget { background: none; margin-bottom: 5px; }"
+    frameBlocks->setStyleSheet("QWidget { background: rgb(203,47,108); margin-bottom: 2px; }");//"QWidget { background: none; margin-bottom: 5px; }"
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -234,6 +235,7 @@ void BitcoinGUI::createActions()
     tooltipTitleString = tr("&Dashboard") + ": " +  tr("Show general overview of wallet");
     overviewAction->setToolTip(tooltipTitleString);
     overviewAction->setCheckable(true);
+
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
@@ -360,6 +362,7 @@ static QWidget* makeToolBarSpacer()
     spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
     spacer->setFixedWidth(80);
     spacer->setStyleSheet(fUseXoatTheme ? "QWidget {  background-color: none;}" : "QWidget { background-color: none; }");
+    qDebug() << "spacer :v";
     return spacer;
 }
 
@@ -372,9 +375,9 @@ void BitcoinGUI::createToolBars()
     if (fUseXoatTheme)
     {
         QWidget* header = new QWidget();
-        header->setMinimumSize(50, 116);
+        header->setMinimumSize(80, 80);
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        header->setStyleSheet("QWidget { background-color: none; background-repeat: no-repeat; background-image: url(:/images/header); background-position: center;}");
+        header->setStyleSheet("QWidget { background-color: none; background-repeat: no-repeat; background-image: url(:/images/header); background-position: top center;}");
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
@@ -390,7 +393,7 @@ void BitcoinGUI::createToolBars()
     toolbar->setOrientation(Qt::Vertical);
     toolbar->setMovable(false);
 
-    toolbar->setIconSize(QSize(40, 40));
+    toolbar->setIconSize(QSize(30, 30));
     toolbar->setFixedWidth(80);
 
     addToolBar(Qt::LeftToolBarArea, toolbar);

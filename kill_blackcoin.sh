@@ -6,7 +6,7 @@ if [[ "" !=  "$PID" ]]; then
 else
   echo "No BlackCoin-Qt process running. QT will not kill any process" false
 fi
-open /Users/cbqa/xoat/BlackCoin-Qt.app/
+#open /Users/cbqa/xoat/BlackCoin-Qt.app/
 
 #PID=$(ps -A | grep -m1 BlackCoin-Qt | awk '{print $1}')
 #echo "killed Xoat process with code: "

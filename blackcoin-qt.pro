@@ -3,6 +3,7 @@ TARGET = xoat-qt
 VERSION = 1.2.5.2
 INCLUDEPATH += src src/json src/qt
 QT += network
+QT += core
 DEFINES += ENABLE_WALLET
 DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
