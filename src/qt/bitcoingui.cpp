@@ -107,7 +107,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Create tabs
     overviewPage = new OverviewPage();
-    overviewPage->setObjectName("qw_dashboard");
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -141,12 +140,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Create status bar
     statusBar();
+    statusBar()->setStyleSheet("background-color: rgb(183,31,124); height: 18px; color: white;");//:v
 
     // Status bar notification icons
     QWidget *frameBlocks = new QWidget();
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("QWidget { background: rgb(203,47,108); margin-bottom: 2px; }");//"QWidget { background: none; margin-bottom: 5px; }"
+    frameBlocks->setStyleSheet("QWidget { background: rgb(203,47,108); margin-bottom: 2px; margin-left:2px }");//"QWidget { background: none; margin-bottom: 5px; }"
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -362,14 +362,13 @@ static QWidget* makeToolBarSpacer()
     spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
     spacer->setFixedWidth(80);
     spacer->setStyleSheet(fUseXoatTheme ? "QWidget {  background-color: none;}" : "QWidget { background-color: none; }");
-    qDebug() << "spacer :v";
     return spacer;
 }
 
 void BitcoinGUI::createToolBars()
 {
     toolbar = new QToolBar(tr("Tabs toolbar"));
-    toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
     toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
 
     if (fUseXoatTheme)
@@ -377,7 +376,8 @@ void BitcoinGUI::createToolBars()
         QWidget* header = new QWidget();
         header->setMinimumSize(80, 80);
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        header->setStyleSheet("QWidget { background-color: none; background-repeat: no-repeat; background-image: url(:/images/header); background-position: top center;}");
+        header->setStyleSheet("QWidget { background: none; background-repeat: no-repeat; border-image: url(:/images/header); border-position: center; padding: 50px;}");
+        header->setFixedSize(80,65); //:v
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
