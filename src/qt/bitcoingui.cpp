@@ -83,6 +83,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 {
     resize(850+95, 550);
     setWindowTitle(tr("Xoat") + " - " + tr("Wallet"));
+    setObjectName("mainWindow");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -140,13 +141,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Create status bar
     statusBar();
-    statusBar()->setStyleSheet("background-color: rgb(183,31,124); height: 18px; color: white;");//:v
+    statusBar()->setObjectName("statusProgressBar");
+    statusBar()->setFixedHeight(20);
 
     // Status bar notification icons
     QWidget *frameBlocks = new QWidget();
+    frameBlocks->setObjectName("notificationIconsBar");
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("QWidget { background: rgb(203,47,108); margin-bottom: 2px; margin-left:2px }");//"QWidget { background: none; margin-bottom: 5px; }"
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -177,10 +179,11 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
+    progressBarLabel->setObjectName("networkProgressBarLabel");
     progressBar = new QProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
-
+    progressBar->setObjectName("networkProgressBar");
     if (!fUseXoatTheme)
     {
         // Override style sheet for progress bar for styles that have a segmented progress bar,
@@ -376,8 +379,9 @@ void BitcoinGUI::createToolBars()
         QWidget* header = new QWidget();
         header->setMinimumSize(80, 80);
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        header->setStyleSheet("QWidget { background: none; background-repeat: no-repeat; border-image: url(:/images/header); border-position: center; padding: 50px;}");
-        header->setFixedSize(80,65); //:v
+        header->setObjectName("toolBarHeader");
+        //header->setStyleSheet("QWidget { background: none; border-repeat: no-repeat; border-image: url(:/images/header); border-position: center; padding: 50px;}");
+        header->setFixedSize(80,60); //:v
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
