@@ -51,7 +51,7 @@ public:
             foreground = qvariant_cast<QColor>(value);
         }
 
-        painter->setPen(fUseXoatTheme ? QColor(255, 255, 255) : foreground);
+        painter->setPen(fUseXoatTheme ? QColor(255, 0, 0) : foreground);//:v
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
 
         if(amount < 0)
@@ -121,7 +121,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     if (fUseXoatTheme)
     {
-        const char* whiteLabelQSS = "QLabel { color: rgb(255,255,255); }";
+        //const char* whiteLabelQSS = "QLabel { color: rgb(255,255,255); }";
         const char* blackLabelQSS = "QLabel { color: rgb(20,20,20); }";
 
         ui->labelBalance->setStyleSheet(blackLabelQSS);
@@ -129,6 +129,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
         ui->labelUnconfirmed->setStyleSheet(blackLabelQSS);
         ui->labelImmature->setStyleSheet(blackLabelQSS);
         ui->labelTotal->setStyleSheet(blackLabelQSS);
+
     }
 }
 
