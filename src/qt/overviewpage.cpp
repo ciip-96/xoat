@@ -12,6 +12,10 @@
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
+#include <QGraphicsDropShadowEffect>
+#include <QLinearGradient>
+#include <QGraphicsOpacityEffect>
+
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 6
@@ -46,6 +50,8 @@ public:
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
         QVariant value = index.data(Qt::ForegroundRole);
         QColor foreground = option.palette.color(QPalette::Text);
+
+
         if(qVariantCanConvert<QColor>(value))
         {
             foreground = qvariant_cast<QColor>(value);
@@ -121,14 +127,36 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     if (fUseXoatTheme)
     {
-        //const char* whiteLabelQSS = "QLabel { color: rgb(255,255,255); }";
+        const char* whiteLabelQSS = "QLabel { color: rgb(255,255,255); }";
         const char* blackLabelQSS = "QLabel { color: rgb(20,20,20); }";
 
-        ui->labelBalance->setStyleSheet(blackLabelQSS);
+        ui->labelBalance->setStyleSheet(whiteLabelQSS);
         ui->labelStake->setStyleSheet(blackLabelQSS);
         ui->labelUnconfirmed->setStyleSheet(blackLabelQSS);
         ui->labelImmature->setStyleSheet(blackLabelQSS);
         ui->labelTotal->setStyleSheet(blackLabelQSS);
+
+        /*QLinearGradient alphaGradient = new QLinearGradient;
+        alphaGradient.setColorAt(0.0, Qt::transparent);
+        alphaGradient.setColorAt(0.5, Qt::black);
+        alphaGradient.setColorAt(1.0, Qt::transparent);
+        QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect;
+        effect->setOpacityMask(alphaGradient);*/
+
+        //QGraphicsOpacityEffect
+        //QGraphicsColorizeEffect
+        QGraphicsDropShadowEffect *cardShadow = new QGraphicsDropShadowEffect;
+        cardShadow->setBlurRadius(12.0);
+        cardShadow->setColor(QColor(12, 12, 12, 160));
+        cardShadow->setOffset(2.0);
+
+        QGraphicsDropShadowEffect *cardShadow2 = new QGraphicsDropShadowEffect;
+        cardShadow2->setBlurRadius(12.0);
+        cardShadow2->setColor(QColor(12, 12, 12, 160));
+        cardShadow2->setOffset(2.0);
+
+        ui->widgetSpendableCard->setGraphicsEffect(cardShadow);
+        ui->recent_transactions->setGraphicsEffect(cardShadow2);
 
     }
 }
@@ -151,7 +179,7 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     currentStake = stake;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
+    ui->labelBalance->setText(BitcoinUnits::format(unit, balance));
     ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
     ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
     ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));

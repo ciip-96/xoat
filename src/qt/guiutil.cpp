@@ -506,7 +506,7 @@ namespace GUIUtil {
         QString LookAndFeel = "Fusion";//default theme
         #ifdef WIN32
                 LookAndFeel = "Windows";
-        #else
+        #else6
                 LookAndFeel = "Fusion";
         #endif
         app.setStyle(QStyleFactory::create(LookAndFeel));//this line will set the look and feel :v
@@ -514,7 +514,7 @@ namespace GUIUtil {
         cout << "Setting CSS to gui." << endl;
         QString styleSheet;
         QString cssName;
-        cssName = QString(":/css/res/css/xoat_light.css");
+        cssName = QString(":css/xoat_light");
         cout << " css: " << cssName.toStdString() << endl;
         QFile qFile(cssName);
         if (qFile.open(QFile::ReadOnly)) {
