@@ -136,13 +136,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralLayout->addWidget(appMenuBar);
 #endif
     centralLayout->addWidget(centralStackedWidget);
-
     setCentralWidget(centralWidget);
+    // crear un qwidget tipo status bar, meter la barra de progreso y los labels ahi y meterlo como aparece la linea 143
 
     // Create status bar
     statusBar();
     statusBar()->setObjectName("statusProgressBar");
-    statusBar()->setFixedHeight(20);
+    statusBar()->setFixedHeight(33);
 
     // Status bar notification icons
     QWidget *frameBlocks = new QWidget();
@@ -150,7 +150,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
-    frameBlocksLayout->setContentsMargins(3,0,3,0);
+    frameBlocksLayout->setContentsMargins(0,3,0,3);
     frameBlocksLayout->setSpacing(3);
     frameBlocksLayout->setAlignment(Qt::AlignHCenter);
     labelEncryptionIcon = new QLabel();
@@ -198,6 +198,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
+
 
     syncIconMovie = new QMovie(fUseXoatTheme ? ":/movies/update_spinner_black" : ":/movies/update_spinner", "mng", this);
 
@@ -363,7 +364,7 @@ static QWidget* makeToolBarSpacer()
 {
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-    spacer->setFixedWidth(80);
+    spacer->setFixedWidth(100);
     spacer->setStyleSheet(fUseXoatTheme ? "QWidget {  background-color: none;}" : "QWidget { background-color: none; }");
     return spacer;
 }
@@ -377,11 +378,10 @@ void BitcoinGUI::createToolBars()
     if (fUseXoatTheme)
     {
         QWidget* header = new QWidget();
-        header->setMinimumSize(80, 80);
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         header->setObjectName("toolBarHeader");
-        //header->setStyleSheet("QWidget { background: none; border-repeat: no-repeat; border-image: url(:/images/header); border-position: center; padding: 50px;}");
-        header->setFixedSize(80,60); //:v
+        header->setFixedWidth(112);
+        header->setFixedHeight(151);
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
@@ -397,8 +397,8 @@ void BitcoinGUI::createToolBars()
     toolbar->setOrientation(Qt::Vertical);
     toolbar->setMovable(false);
 
-    toolbar->setIconSize(QSize(30, 30));
-    toolbar->setFixedWidth(80);
+    toolbar->setIconSize(QSize(33, 33));
+    toolbar->setFixedWidth(100);
 
     addToolBar(Qt::LeftToolBarArea, toolbar);
 
