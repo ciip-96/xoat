@@ -13,6 +13,15 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel{
+    font-family: &quot;Montserrat&quot;, sans-serif;
+    font-size: 15px;
+    text-transform:uppercase;
+	font-weight: bold;
+}
+</string>
+  </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
   </property>
@@ -73,7 +82,7 @@
      <item>
       <widget class="QValidatedLineEdit" name="payTo">
        <property name="toolTip">
-        <string>The address to send the payment to (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</string>
+        <string>The address to send the payment to (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</string>
        </property>
        <property name="maxLength">
         <number>34</number>
@@ -85,12 +94,21 @@
        <property name="toolTip">
         <string>Choose address from address book</string>
        </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
        <property name="text">
         <string/>
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
+         <normaloff>:/icons/address-book-s</normaloff>:/icons/address-book-s</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
        <property name="shortcut">
         <string>Alt+A</string>
@@ -109,13 +127,19 @@
         <iconset resource="../bitcoin.qrc">
          <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
        </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="shortcut">
         <string>Alt+P</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="deleteButton">
+      <widget class="QToolButton" name="deleteEntryButton">
        <property name="toolTip">
         <string>Remove this recipient</string>
        </property>
@@ -125,6 +149,12 @@
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
       </widget>
      </item>

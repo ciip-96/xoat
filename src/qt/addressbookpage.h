@@ -28,7 +28,6 @@ public:
         SendingTab = 0,
         ReceivingTab = 1
     };
-
     enum Mode {
         ForSending, /**< Open address book to pick address for sending */
         ForEditing  /**< Open address book for editing */

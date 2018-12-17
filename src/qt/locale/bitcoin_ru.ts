@@ -1008,8 +1008,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+426"/>
         <location line="+12"/>
-        <source>Xoat-Qt</source>
-        <translation>Xoat-Qt</translation>
+        <source>Xoat</source>
+        <translation>Xoat</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1196,7 +1196,7 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Use xoat visual theme (requires restart)</source>
+        <source>Use light visual theme (requires restart)</source>
         <translation>Использовать чёрную тему оформления (требуется перезапуск)</translation>
     </message>
     <message>
@@ -1491,8 +1491,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Xoat-Qt help message to get a list with possible Xoat command-line options.</source>
-        <translation>Показать помощь по Xoat-Qt, чтобы получить список доступных параметров командной строки.</translation>
+        <source>Show the Xoat help message to get a list with possible Xoat command-line options.</source>
+        <translation>Показать помощь по Xoat, чтобы получить список доступных параметров командной строки.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1707,8 +1707,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-171"/>
-        <source>Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Введите Xoat-адрес (например B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Введите Xoat-адрес (например X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1835,8 +1835,8 @@ Address: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Адрес получателя платежа (например B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>The address to send the payment to (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Адрес получателя платежа (например X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1876,8 +1876,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Введите Xoat-адрес (например B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Введите Xoat-адрес (например X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
 </context>
 <context>
@@ -1900,8 +1900,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Адрес, которым вы хотите подписать сообщение  (напр. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>The address to sign the message with (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Адрес, которым вы хотите подписать сообщение  (напр. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1964,8 +1964,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Адрес, которым было подписано сообщение (напр. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>The address the message was signed with (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Адрес, которым было подписано сообщение (напр. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1980,8 +1980,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Введите адрес Xoat (напр. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Введите адрес Xoat (напр. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2695,8 +2695,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Xoat Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="-126"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 15715 or testnet: 25715)</source>
-        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 15715 или для testnet: 25715)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 10333 or testnet: 11333)</source>
+        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 10333 или для testnet: 11333)</translation>
     </message>
     <message>
         <location line="-16"/>

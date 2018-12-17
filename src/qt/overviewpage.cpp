@@ -15,9 +15,11 @@
 #include <QGraphicsDropShadowEffect>
 #include <QLinearGradient>
 #include <QGraphicsOpacityEffect>
-
+#include <QtDebug>
 
 #define DECORATION_SIZE 64
+#define ICON_SIZE 32
+
 #define NUM_ITEMS 6
 
 class TxViewDelegate : public QAbstractItemDelegate
@@ -33,10 +35,16 @@ public:
                       const QModelIndex &index ) const
     {
         painter->save();
-
+          //:v
+        QFont montserratFontRegular("Montserrat",12, 1, false);
+        QFont montserratFontLarge("Montserrat",22, 1, false);
+        montserratFontLarge.setBold(true);
+        QFont defaultFont = painter->font();
+        painter->setFont(montserratFontRegular);
+           // v:
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
-        QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE, DECORATION_SIZE));
+        QRect decorationRect(mainRect.topLeft(), QSize(ICON_SIZE, ICON_SIZE));
         int xspace = DECORATION_SIZE + 8;
         int ypad = 6;
         int halfheight = (mainRect.height() - 2*ypad)/2;
@@ -49,15 +57,13 @@ public:
         qint64 amount = index.data(TransactionTableModel::AmountRole).toLongLong();
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
         QVariant value = index.data(Qt::ForegroundRole);
-        QColor foreground = option.palette.color(QPalette::Text);
-
-
+        QColor foreground = option.palette.color(QPalette::Dark);
         if(qVariantCanConvert<QColor>(value))
         {
             foreground = qvariant_cast<QColor>(value);
         }
 
-        painter->setPen(fUseXoatTheme ? QColor(255, 0, 0) : foreground);//:v
+        painter->setPen(fUseXoatTheme ? QColor(164, 164, 164) : foreground);
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
 
         if(amount < 0)
@@ -70,19 +76,22 @@ public:
         }
         else
         {
-            foreground = option.palette.color(QPalette::Text);
+            foreground = option.palette.color(QPalette::Dark);//:v
         }
-        painter->setPen(fUseXoatTheme ? QColor(255, 255, 255) : foreground);
-        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
+        painter->setPen(fUseXoatTheme ?  foreground: QColor(18, 18, 18));//:v
+
+
+        QString amountText = BitcoinUnits::format(unit, amount, true);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
         }
-        painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
+        painter->setFont(montserratFontLarge);//:v
+        painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
+        painter->setFont(montserratFontRegular);//:v
         painter->setPen(fUseXoatTheme ? QColor(96, 101, 110) : option.palette.color(QPalette::Text));
         painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
-
         painter->restore();
     }
 
@@ -115,6 +124,9 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listTransactions->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listTransactions->setAttribute(Qt::WA_MacShowFocusRect, false);
+    ui->listTransactions->setSpacing(10);
+    //ui->listTransactions->s
+
 
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
@@ -128,31 +140,23 @@ OverviewPage::OverviewPage(QWidget *parent) :
     if (fUseXoatTheme)
     {
         const char* whiteLabelQSS = "QLabel { color: rgb(255,255,255); }";
-        const char* blackLabelQSS = "QLabel { color: rgb(20,20,20); }";
+        const char* blackLabelCSS = "QLabel { color: rgb(18,18,18); }";
 
         ui->labelBalance->setStyleSheet(whiteLabelQSS);
-        ui->labelStake->setStyleSheet(blackLabelQSS);
-        ui->labelUnconfirmed->setStyleSheet(blackLabelQSS);
-        ui->labelImmature->setStyleSheet(blackLabelQSS);
-        ui->labelTotal->setStyleSheet(blackLabelQSS);
+        ui->labelStake->setStyleSheet(blackLabelCSS);
+        ui->labelUnconfirmed->setStyleSheet(blackLabelCSS);
+        ui->labelImmature->setStyleSheet(blackLabelCSS);
+        ui->labelTotal->setStyleSheet(blackLabelCSS);
 
-        /*QLinearGradient alphaGradient = new QLinearGradient;
-        alphaGradient.setColorAt(0.0, Qt::transparent);
-        alphaGradient.setColorAt(0.5, Qt::black);
-        alphaGradient.setColorAt(1.0, Qt::transparent);
-        QGraphicsOpacityEffect *effect = new QGraphicsOpacityEffect;
-        effect->setOpacityMask(alphaGradient);*/
 
-        //QGraphicsOpacityEffect
-        //QGraphicsColorizeEffect
         QGraphicsDropShadowEffect *cardShadow = new QGraphicsDropShadowEffect;
         cardShadow->setBlurRadius(12.0);
-        cardShadow->setColor(QColor(12, 12, 12, 160));
+        cardShadow->setColor(QColor(20, 20, 20, 160));
         cardShadow->setOffset(2.0);
 
         QGraphicsDropShadowEffect *cardShadow2 = new QGraphicsDropShadowEffect;
         cardShadow2->setBlurRadius(12.0);
-        cardShadow2->setColor(QColor(12, 12, 12, 160));
+        cardShadow2->setColor(QColor(20, 20, 20, 140));//:v
         cardShadow2->setOffset(2.0);
 
         ui->widgetSpendableCard->setGraphicsEffect(cardShadow);

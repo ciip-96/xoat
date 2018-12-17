@@ -2,25 +2,25 @@
 <!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
 <plist version="0.9">
 <dict>
-	<key>CFBundleIconFile</key>
-	<string>bitcoin.icns</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleGetInfoString</key>
-	<string>BlackCoin-Qt</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleExecutable</key>
-	<string>BlackCoin-Qt</string>
-	<key>CFBundleIdentifier</key>
-	<string>co.xoat.BlackCoin-Qt</string>
+        <key>CFBundleIconFile</key>
+        <string>bitcoin.icns</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleGetInfoString</key>
+        <string>Xoat-Qt</string>
+        <key>CFBundleSignature</key>
+        <string>????</string>
+        <key>CFBundleExecutable</key>
+        <string>Xoat-Qt</string>
+        <key>CFBundleIdentifier</key>
+        <string>co.xoat.Xoat-Qt</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>co.xoat.BlackCoinPayment</string>
+            <string>co.xoat.XoatPayment</string>
             <key>CFBundleURLSchemes</key>
             <array>
               <string>xoat</string>
@@ -29,5 +29,7 @@
         </array>
         <key>LSAppNapIsDisabled</key>
           <string>True</string>
+        <key>NSHighResolutionCapable</key>
+        <true/>
 </dict>
 </plist>

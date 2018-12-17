@@ -1,14 +1,18 @@
 ---
 name: "xoat"
 suites:
-- "lucid"
+- "trusty"
 architectures:
 - "i386"
 - "amd64"
-packages: 
-- "libdb4.8++-dev"
-- "qt4-qmake"
-- "libqt4-dev"
+packages:
+- "libdb5.3++-dev"
+#- "qt4-qmake"
+- "qt5-qmake"
+- "qt5-default"
+- "qttools5-dev-tools"
+#- "libqt4-dev"
+#- "qtdeclarative5-dev"
 - "libboost-system-dev"
 - "libboost-filesystem-dev"
 - "libboost-program-options-dev"
@@ -20,7 +24,7 @@ packages:
 - "libpng12-dev"
 reference_datetime: "2011-01-30 00:00:00"
 remotes:
-- "url": "https://github.com/CoinBlack/xoat.git"
+- "url": "https://ivan_cbqa@bitbucket.org/cbqa-demo/xoat.git"
   "dir": "xoat"
 files:
 - "miniupnpc-1.6.tar.gz"

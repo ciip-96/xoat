@@ -318,7 +318,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+17"/>
         <source>&amp;Transactions</source>
-        <translation>&amp;Transacciones</translation>
+        <translation>Transacciones</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -328,7 +328,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+5"/>
         <source>&amp;Address Book</source>
-        <translation>&amp;Libreta de Direcciones</translation>
+        <translation>Libreta de Direcciones</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -536,17 +536,17 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-812"/>
         <source>&amp;Dashboard</source>
-        <translation type="unfinished">Resumen</translation>
+        <translation type="inProgress">Resumen</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&amp;Receive</source>
-        <translation type="unfinished">Recibir</translation>
+        <translation type="inProgress">Recibir</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&amp;Send</source>
-        <translation type="unfinished">Enviar</translation>
+        <translation type="inProgress">Enviar</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -606,7 +606,7 @@ Dirección: %4
     <message>
         <location line="+9"/>
         <source>Wallet is &lt;b&gt;not encrypted&lt;/b&gt;</source>
-        <translation type="unfinished">Su Billetera no está encriptada</translation>
+        <translation>El monedero no está &lt;b&gt;cifrado&lt;/b&gt;</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -910,7 +910,7 @@ Puede variar + / - 1 Byte por entrada.</translation>
         <location line="+1"/>
         <source>This label turns red, if any recipient receives an amount smaller than %1.
 
- This means a fee of at least %2 is required.
+ This means a fee of at least %2 is required. 
 
  Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
         <translation>Esta etiqueta se convierte en rojo, si cualquier recipiente recibe una cantidad menor que %1.
@@ -1018,8 +1018,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+426"/>
         <location line="+12"/>
-        <source>Xoat-Qt</source>
-        <translation>Xoat-Qt</translation>
+        <source>Xoat</source>
+        <translation>Xoat</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1137,12 +1137,12 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="-57"/>
         <source>Connect to the Xoat network through a SOCKS5 proxy (e.g. when connecting through Tor).</source>
-        <translation type="unfinished"/>
+        <translation type="inProgress">Conectese a la red de Xoat mediante un proxy SOCKS5 (ej. cuando se conecta por Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Connect through SOCKS5 proxy:</source>
-        <translation type="unfinished"/>
+        <translation type="inProgress">&amp;Conectese mediante un proxy SOCKS5:</translation>
     </message>
     <message>
         <location line="+90"/>
@@ -1206,8 +1206,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Use xoat visual theme (requires restart)</source>
-        <translation type="unfinished"/>
+        <source>Use light visual theme (requires restart)</source>
+        <translation type="inProgress">Usar tema visual light (requiere reiniciar wallet)</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1332,7 +1332,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
         <source>Cannot start xoat: click-to-pay handler</source>
-        <translation type="unfinished"/>
+        <translation type="inProgress">No se puede iniciar xoat: manejador de click-para-pagar</translation>
     </message>
 </context>
 <context>
@@ -1460,7 +1460,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+197"/>
         <source>&amp;Network Traffic</source>
-        <translation type="unfinished"/>
+        <translation type="inProgress">&amp;Trafico de Red</translation>
     </message>
     <message>
         <location line="+52"/>
@@ -1470,7 +1470,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+13"/>
         <source>Totals</source>
-        <translation type="unfinished"/>
+        <translation type="inProgress">Totales</translation>
     </message>
     <message>
         <location line="+64"/>
@@ -1501,8 +1501,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Xoat-Qt help message to get a list with possible Xoat command-line options.</source>
-        <translation>Mostrar el mensaje de ayuda de Xoat-Qt para obtener una lista con las posibles opciones de línea de comandos para Xoat.</translation>
+        <source>Show the Xoat help message to get a list with possible Xoat command-line options.</source>
+        <translation>Mostrar el mensaje de ayuda de Xoat para obtener una lista con las posibles opciones de línea de comandos para Xoat.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1717,8 +1717,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-171"/>
-        <source>Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Introduce una dirección Xoat (p.ej. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Introduce una dirección Xoat (p.ej. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1845,8 +1845,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation type="unfinished"/>
+        <source>The address to send the payment to (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation type="inProgress">La dirección a enviar el pago (Ej. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1886,8 +1886,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Introduce una dirección Xoat (p.ej. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Introduce una dirección Xoat (p.ej. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
 </context>
 <context>
@@ -1910,8 +1910,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>La dirección a firmar con un mensaje (p.ej. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>The address to sign the message with (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>La dirección a firmar con un mensaje (p.ej. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1974,8 +1974,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>La dirección firmada con un mensaje (p.ej. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>The address the message was signed with (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>La dirección firmada con un mensaje (p.ej. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1990,8 +1990,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Introduce una dirección Xoat (p.ej B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Introduce una dirección Xoat (p.ej X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2707,8 +2707,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Xoat Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="-126"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 15715 or testnet: 25715)</source>
-        <translation>Escuchar conexiones JSON-RPC en &lt;port&gt; (predeterminado: 15715 o testnet: 25715)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 10333 or testnet: 11333)</source>
+        <translation>Escuchar conexiones JSON-RPC en &lt;port&gt; (predeterminado: 10333 o testnet: 11333)</translation>
     </message>
     <message>
         <location line="-16"/>

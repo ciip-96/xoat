@@ -104,7 +104,7 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("language", "");
         case CoinControlFeatures:
             return QVariant(fCoinControlFeatures);
-        case UseBlackTheme:
+        case UseLightTheme:
             return QVariant(fUseXoatTheme);
         default:
             return QVariant();
@@ -185,7 +185,7 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             emit coinControlFeaturesChanged(fCoinControlFeatures);
             }
             break;
-        case UseBlackTheme:
+        case UseLightTheme:
             fUseXoatTheme = value.toBool();
             settings.setValue("fUseXoatTheme", fUseXoatTheme);
             break;

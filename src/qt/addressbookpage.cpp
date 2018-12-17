@@ -36,6 +36,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
 #ifndef USE_QRCODE
     ui->showQRCode->setVisible(false);
 #endif
+    ui->tableView->setShowGrid(false);
 
     switch(mode)
     {
@@ -138,6 +139,7 @@ void AddressBookPage::setModel(AddressTableModel *model)
             AddressTableModel::Address, 320);
     ui->tableView->horizontalHeader()->setResizeMode(
             AddressTableModel::Label, QHeaderView::Stretch);
+
 
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));

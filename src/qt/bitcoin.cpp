@@ -82,7 +82,7 @@ static void InitMessage(const std::string &message)
 {
     if(splashref)
     {
-        splashref->showMessage(QString::fromStdString(message), Qt::AlignBottom|Qt::AlignHCenter, QColor(232,186,63));
+        splashref->showMessage(QString::fromStdString(message), Qt::AlignBottom|Qt::AlignHCenter, QColor(245,138,16));//:v
         QApplication::instance()->processEvents();
     }
     LogPrintf("init message: %s\n", message);
@@ -241,13 +241,9 @@ int main(int argc, char *argv[])
 
     try
     {
-        if (fUseXoatTheme){
-            cout << "setting theme" << endl;
-            //GUIUtil::SetLightThemeQSS(app);//XOAT THEME
-            //GUIUtil::SetStyle(app); //test THEME
-            GUIUtil::SetLightThemeQSS(app);//XOAT THEME
-
-        }
+        if (fUseXoatTheme)
+            GUIUtil::SetLightThemeQSS(app);
+            //GUIUtil::SetBlackThemeQSS(app);
 
         // Regenerate startup link, to fix links to old versions
         if (GUIUtil::GetStartOnSystemStartup())

@@ -4,7 +4,6 @@
 #include <QAbstractListModel>
 
 extern bool fUseXoatTheme;
-
 /** Interface from Qt to configuration data structure for Bitcoin client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
@@ -31,7 +30,7 @@ public:
         DisplayUnit,       // BitcoinUnits::Unit
         Language,          // QString
         CoinControlFeatures, // bool
-        UseBlackTheme,     // bool
+        UseLightTheme,     // bool
         OptionIDRowCount,
     };
 

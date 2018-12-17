@@ -24,7 +24,7 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
-    ui->payTo->setPlaceholderText(tr("Enter a Xoat address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)"));
+    ui->payTo->setPlaceholderText(tr("Enter a Xoat address (e.g. X8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)"));
 #endif
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(ui->payTo);
@@ -80,7 +80,7 @@ void SendCoinsEntry::setModel(WalletModel *model)
 
 void SendCoinsEntry::setRemoveEnabled(bool enabled)
 {
-    ui->deleteButton->setEnabled(enabled);
+    ui->deleteEntryButton->setEnabled(enabled);
 }
 
 void SendCoinsEntry::clear()
@@ -93,7 +93,7 @@ void SendCoinsEntry::clear()
     updateDisplayUnit();
 }
 
-void SendCoinsEntry::on_deleteButton_clicked()
+void SendCoinsEntry::on_deleteEntryButton_clicked()
 {
     emit removeEntry(this);
 }
@@ -143,8 +143,8 @@ QWidget *SendCoinsEntry::setupTabChain(QWidget *prev)
     QWidget::setTabOrder(prev, ui->payTo);
     QWidget::setTabOrder(ui->payTo, ui->addressBookButton);
     QWidget::setTabOrder(ui->addressBookButton, ui->pasteButton);
-    QWidget::setTabOrder(ui->pasteButton, ui->deleteButton);
-    QWidget::setTabOrder(ui->deleteButton, ui->addAsLabel);
+    QWidget::setTabOrder(ui->pasteButton, ui->deleteEntryButton);
+    QWidget::setTabOrder(ui->deleteEntryButton, ui->addAsLabel);
     return ui->payAmount->setupTabChain(ui->addAsLabel);
 }
 

@@ -58,12 +58,14 @@
 #include <QUrl>
 #include <QMimeData>
 #include <QStyle>
-
-#include <iostream>
+#include <QFontDatabase>
+#include <QListWidget>
+#include <QGraphicsDropShadowEffect>
 
 extern CWallet* pwalletMain;
 extern int64_t nLastCoinStakeSearchInterval;
 double GetPoSKernelPS();
+QVBoxLayout *centralLayout;
 
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
@@ -84,27 +86,26 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     resize(850+95, 550);
     setWindowTitle(tr("Xoat") + " - " + tr("Wallet"));
     setObjectName("mainWindow");
+    QFontDatabase::addApplicationFont(":/fonts/Montserrat-Medium");
+    QFontDatabase::addApplicationFont(":/fonts/Montserrat-Regular");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
 #else
-    //setUnifiedTitleAndToolBarOnMac(true);
+    //setUnifiedTitleAndToolBarOnMac(false);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
     // Accept D&D of URIs
     setAcceptDrops(true);
-
     // Create actions for the toolbar, menu bar and tray/dock icon
     createActions();
-
     // Create application menu bar
     createMenuBar();
-
     // Create the toolbars
     createToolBars();
-
     // Create the tray icon (or setup the dock icon)
     createTrayIcon();
+
 
     // Create tabs
     overviewPage = new OverviewPage();
@@ -112,31 +113,38 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     transactionView = new TransactionView(this);
+
     vbox->addWidget(transactionView);
     transactionsPage->setLayout(vbox);
 
     addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
-
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
 
-    sendCoinsPage = new SendCoinsDialog(this);
+    receiveCoinsPage->sizePolicy();
 
+    sendCoinsPage = new SendCoinsDialog(this);
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
     centralStackedWidget = new QStackedWidget(this);
     centralStackedWidget->addWidget(overviewPage);
     centralStackedWidget->addWidget(transactionsPage);
     centralStackedWidget->addWidget(addressBookPage);
+
     centralStackedWidget->addWidget(receiveCoinsPage);
     centralStackedWidget->addWidget(sendCoinsPage);
 
+
     QWidget *centralWidget = new QWidget();
-    QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
+    centralWidget->adjustSize();
+    centralLayout = new QVBoxLayout(centralWidget);
+
 #ifndef Q_OS_MAC
     centralLayout->addWidget(appMenuBar);
 #endif
+    centralLayout->setAlignment(Qt::AlignCenter);
     centralLayout->addWidget(centralStackedWidget);
     setCentralWidget(centralWidget);
+
     // crear un qwidget tipo status bar, meter la barra de progreso y los labels ahi y meterlo como aparece la linea 143
 
     // Create status bar
@@ -154,6 +162,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->setSpacing(3);
     frameBlocksLayout->setAlignment(Qt::AlignHCenter);
     labelEncryptionIcon = new QLabel();
+
     labelStakingIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
     labelBlocksIcon = new QLabel();
@@ -224,7 +233,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
 BitcoinGUI::~BitcoinGUI()
 {
-    if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
+    if(trayIcon) // Hide tray icon, as deleting will let it longer until quit (on Ubuntu)
         trayIcon->hide();
 #ifdef Q_OS_MAC
     delete appMenuBar;
@@ -295,7 +304,7 @@ void BitcoinGUI::createActions()
     optionsAction = new QAction(tr("&Options..."), this);
     optionsAction->setToolTip(tr("Modify configuration options for Xoat"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
-    toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
+    toggleHideAction = new QAction(QIcon(":/icons/xoat"), tr("&Show / Hide"), this);
     encryptWalletAction = new QAction(tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     backupWalletAction = new QAction(tr("&Backup Wallet..."), this);
@@ -372,6 +381,7 @@ static QWidget* makeToolBarSpacer()
 void BitcoinGUI::createToolBars()
 {
     toolbar = new QToolBar(tr("Tabs toolbar"));
+    toolbar->setObjectName("toolBar");
     toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
     toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
 
@@ -399,6 +409,12 @@ void BitcoinGUI::createToolBars()
 
     toolbar->setIconSize(QSize(33, 33));
     toolbar->setFixedWidth(100);
+
+    QGraphicsDropShadowEffect *toolbarShadow = new QGraphicsDropShadowEffect;
+    toolbarShadow->setBlurRadius(5.0);
+    toolbarShadow->setColor(QColor(220, 220, 220, 200));
+    toolbarShadow->setOffset(4.0);
+    toolbar->setGraphicsEffect(toolbarShadow);
 
     addToolBar(Qt::LeftToolBarArea, toolbar);
 
@@ -484,6 +500,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
 void BitcoinGUI::createTrayIcon()
 {
     QMenu *trayIconMenu;
+
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
@@ -515,10 +532,8 @@ void BitcoinGUI::createTrayIcon()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 #endif
-
     notificator = new Notificator(qApp->applicationName(), trayIcon);
 }
-
 #ifndef Q_OS_MAC
 void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
@@ -782,18 +797,18 @@ void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int 
 
 void BitcoinGUI::gotoOverviewPage()
 {
+    centralLayout->setMargin(50);
     overviewAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(overviewPage);
-
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
 void BitcoinGUI::gotoHistoryPage()
 {
+    centralLayout->setMargin(50);
     historyAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(transactionsPage);
-
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(exportClicked()));
@@ -801,6 +816,7 @@ void BitcoinGUI::gotoHistoryPage()
 
 void BitcoinGUI::gotoAddressBookPage()
 {
+    centralLayout->setMargin(50);
     addressBookAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(addressBookPage);
 
@@ -811,9 +827,9 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
+    centralLayout->setMargin(50);
     receiveCoinsAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(receiveCoinsPage);
-
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(exportClicked()));
@@ -821,9 +837,9 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
+    centralLayout->setMargin(50);
     sendCoinsAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(sendCoinsPage);
-
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
@@ -839,6 +855,7 @@ void BitcoinGUI::gotoSignMessageTab(QString addr)
 
 void BitcoinGUI::gotoVerifyMessageTab(QString addr)
 {
+    //centralLayout->setSpacing(0);
     // call show() in showTab_VM()
     signVerifyMessageDialog->showTab_VM(true);
 
@@ -874,6 +891,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
 
     event->acceptProposedAction();
 }
+
 
 void BitcoinGUI::handleURI(QString strURI)
 {

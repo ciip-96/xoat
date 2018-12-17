@@ -12,6 +12,8 @@
 #include "util.h"
 #include "wallet.h"
 #include "walletdb.h"
+#include "bip39_english.h"
+#include "monocypher.h"
 
 using namespace std;
 using namespace json_spirit;
@@ -288,6 +290,73 @@ Value sendtoaddress(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
 
     return wtx.GetHash().GetHex();
+}
+
+bool crypto_xoatnet_sk_check_version(const uint8_t sk[32])
+{
+    return (sk[0] & 0xF0) == 0x10;
+}
+
+bool crypto_xoatnet_mnemonic_sk(const SecureString& mnemonic, uint8_t sk[32])
+{
+    crypto_blake2b_general(sk, 32, NULL, 0, (const uint8_t*)mnemonic.data(), mnemonic.length());
+    return crypto_xoatnet_sk_check_version(sk);
+}
+
+bool crypto_xoatnet_mnemonic_keypair(const SecureString& mnemonic, uint8_t pk[32], uint8_t sk[32])
+{
+    if (!crypto_xoatnet_mnemonic_sk(mnemonic, sk))
+        return false;
+    crypto_sign_public_key(pk, sk);
+    return true;
+}
+
+bool crypto_xoatnet_mnemonic_check_version(const SecureString& mnemonic)
+{
+    uint8_t sk[32];
+    bool ret = crypto_xoatnet_mnemonic_sk(mnemonic, sk);
+    crypto_wipe(sk, sizeof(sk));
+    return ret;
+}
+
+SecureString crypto_xoatnet_mnemonic()
+{
+    const int words = 12; // 132 bits = 4 bits version + 128 bits seed
+    uint16_t seed[words];
+    SecureString mnemonic;
+    mnemonic.reserve(108);
+
+    while (true) {
+        RAND_bytes((unsigned char*)seed, sizeof(seed));
+        for (int i = 0; i < words; i++) {
+            mnemonic += bip39_english[seed[i] % 2048];
+            if (i < words - 1) mnemonic += ' ';
+        }
+        if (crypto_xoatnet_mnemonic_check_version(mnemonic))
+            break;
+        mnemonic.clear();
+    }
+
+    crypto_wipe(seed, sizeof(seed));
+    return mnemonic;
+}
+
+Value xoatnetkeypair(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() > 0)
+        throw runtime_error(
+            "xoatnetkeypair\n"
+            "Make a public/private key pair.\n");
+
+    SecureString mnemonic = crypto_xoatnet_mnemonic();
+    uint8_t pk[32], sk[32];
+    assert(crypto_xoatnet_mnemonic_keypair(mnemonic, pk, sk));
+    crypto_wipe(sk, sizeof(sk));
+
+    Object result;
+    result.push_back(Pair("Mnemonic (private key)", mnemonic.c_str()));
+    result.push_back(Pair("PublicKey", HexStr(BEGIN(pk), END(pk))));
+    return result;
 }
 
 Value burn(const Array& params, bool fHelp)
@@ -1617,7 +1686,7 @@ Value repairwallet(const Array& params, bool fHelp)
     return result;
 }
 
-// NovaCoin: resend unconfirmed wallet transactions
+// AltCoin: resend unconfirmed wallet transactions
 Value resendtx(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)

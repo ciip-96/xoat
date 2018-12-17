@@ -84,7 +84,7 @@ namespace GUIUtil {
 
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     {
-        // NovaCoin: check prefix
+        // AltCoin: check prefix
         if(uri.scheme() != QString("xoat"))
             return false;
 
@@ -424,10 +424,10 @@ namespace GUIUtil {
     HelpMessageBox::HelpMessageBox(QWidget *parent) :
         QMessageBox(parent)
     {
-        header = tr("Xoat-Qt") + " " + tr("version") + " " +
+        header = tr("Xoat") + " " + tr("version") + " " +
             QString::fromStdString(FormatFullVersion()) + "\n\n" +
             tr("Usage:") + "\n" +
-            "  xoat-qt [" + tr("command-line options") + "]                     " + "\n";
+            "  Xoat [" + tr("command-line options") + "]                     " + "\n";
 
         coreOptions = QString::fromStdString(HelpMessage());
 
@@ -436,7 +436,7 @@ namespace GUIUtil {
             "  -min                   " + tr("Start minimized") + "\n" +
             "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
 
-        setWindowTitle(tr("Xoat-Qt"));
+        setWindowTitle(tr("Xoat"));
         setTextFormat(Qt::PlainText);
         // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
         setText(header + QString(QChar(0x2003)).repeated(50));
@@ -460,7 +460,7 @@ namespace GUIUtil {
             printToConsole();
     #endif
     }
-    void SetBlackThemeQSS(QApplication& app)
+    /*void SetBlackThemeQSS(QApplication& app)
     {
         app.setStyleSheet("QWidget        { background: rgb(233,233,233); }"
                           "QFrame         { border: none; }"
@@ -497,21 +497,22 @@ namespace GUIUtil {
             cout <<  "\n Styles: " << endl;
             for(int i=0 ; i < styles.length() ; i++)
                 cout << styles.at(i).toStdString() << endl;
-    }
+    }*/
     /*
         Xoat Default Theme
     */
     void SetLightThemeQSS(QApplication& app)
     {
-        QString LookAndFeel = "Fusion";//default theme
+        //QString LookAndFeel = "Fusion";//default theme
         #ifdef WIN32
-                LookAndFeel = "Windows";
-        #else6
-                LookAndFeel = "Fusion";
+                //LookAndFeel = "Windows";
+        #else
+                //LookAndFeel = "macintosh";
         #endif
-        app.setStyle(QStyleFactory::create(LookAndFeel));//this line will set the look and feel :v
+       //app.setStyle(Q::create(LookAndFeel));//this line will set the look and feel :v
 
-        cout << "Setting CSS to gui." << endl;
+//       cout << "Setting CSS to gui using look and feel of "<< LookAndFeel.toStdString() << endl;
+
         QString styleSheet;
         QString cssName;
         cssName = QString(":css/xoat_light");

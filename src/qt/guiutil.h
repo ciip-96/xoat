@@ -116,7 +116,7 @@ namespace GUIUtil
         QString uiOptions;
     };
 
-    void SetBlackThemeQSS(QApplication& app);
+    //void SetBlackThemeQSS(QApplication& app);
     void SetLightThemeQSS(QApplication& app);
 
 
