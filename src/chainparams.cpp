@@ -52,7 +52,7 @@ public:
         pchMessageStart[1] = 0xf3;
         pchMessageStart[2] = 0xa0;
         pchMessageStart[3] = 0x5f;
-        vAlertPubKey = ParseHex("041ada49bc9d49bff5f122ffcdcda0d200beba8ea2a8db684e6ba408487fc3446dce2578c9841e9af5b9d94c1368901d2af765088b90beebc2f60c94d2b862ada3");
+        vAlertPubKey = ParseHex("0486bce1bac0d543f104cbff2bd23680056a3b9ea05e1137d2ff90eeb5e08472eb500322593a2cb06fbf8297d7beb6cd30cb90f98153b5b7cce1493749e41e0284");
         nDefaultPort = 15714;
         nRPCPort = 10333;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
@@ -65,47 +65,47 @@ public:
         //    CTxIn(COutPoint(0000000000, 4294967295), coinbase 00012a24323020466562203230313420426974636f696e2041544d7320636f6d6520746f20555341)
         //    CTxOut(empty)
         //  vMerkleTree: 12630d16a9
-        const char* pszTimestamp = "US SEC Chairman Jay Clayton: ICOs Can Be Effective, But Securities Laws Must Be Followed";
+        const char* pszTimestamp = "Market Rebounds: Ethereum Soars 18 percent Back over 200 usd, Bitcoin Regains 6,500 usd";
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1544470175, vin, vout, 0);
+        CTransaction txNew(1, 1536949099, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1544470175;
+        genesis.nTime    = 1536949099;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 1516907;
+        genesis.nNonce   = 25002;
         //hashGenesisBlock = uint256("0x0");
         //if (true && genesis.GetHash() != hashGenesisBlock)
-        //{
-        //    printf("recalculating params for mainnet.\n");
-        //    printf("old mainnet genesis nonce: %08u\n", genesis.nNonce);
-        //    printf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
-        //    // deliberately empty for loop finds nonce value.
-        //    uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-        //    for(genesis.nNonce = 0; genesis.GetHash() > hashTarget; genesis.nNonce++){
-        //         if (genesis.nNonce % 10000 == 0)
-        //        {
-        //           printf("genensis nonce: %08u\n",genesis.nNonce);
-        //           printf("loop mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-        //         printf("genensis bits: %08u\n",genesis.nBits);
-        //        }
-        //    }
-        //    printf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        //    printf("new mainnet genesis nonce: %08u\n", genesis.nNonce);
-        //    printf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-        //}
+       // {
+         //   printf("recalculating params for mainnet.\n");
+         //   printf("old mainnet genesis nonce: %08u\n", genesis.nNonce);
+         //   printf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
+            // deliberately empty for loop finds nonce value.
+         //   uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+         //   for(genesis.nNonce = 0; genesis.GetHash() > hashTarget; genesis.nNonce++){
+         //        if (genesis.nNonce % 10000 == 0)
+         //       {
+         //          printf("genensis nonce: %08u\n",genesis.nNonce);
+         //          printf("loop mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+         //          printf("genensis bits: %08u\n",genesis.nBits);
+         //       }
+         //   }
+         //   printf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+         //   printf("new mainnet genesis nonce: %08u\n", genesis.nNonce);
+         //   printf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
+       // }
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000d9d009f400d9d1e1a9d78bcafe7f76fbe2333a1ad171a748ea02049512a"));
-        assert(genesis.hashMerkleRoot == uint256("0x3581a10f4c5352fe9b7055ad42c39ee84a0eff766be926c6f4b470053f95eba0"));
+        assert(hashGenesisBlock == uint256("0x00000386c401e4987c1803ae562702e13fdc1b40e251d4436c6290875a3497f2"));
+        assert(genesis.hashMerkleRoot == uint256("0xc91c39420db1fed84931432cce8f290837de529ffc3abd3375bb37bb2a5e83f6"));
 
-        vSeeds.push_back(CDNSSeedData("xoatofficial.com", "dnsseeder.xoatofficial.com"));
+        vSeeds.push_back(CDNSSeedData("", ""));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 75);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 30);
@@ -116,6 +116,7 @@ public:
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         nLastPOWBlock = 1000;
+        //nLastPOWBlock = 10;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
@@ -141,27 +142,27 @@ public:
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
-        pchMessageStart[0] = 0xca;
-        pchMessageStart[1] = 0xa2;
-        pchMessageStart[2] = 0xd0;
-        pchMessageStart[3] = 0xb5;
+        pchMessageStart[0] = 0xcd;
+        pchMessageStart[1] = 0xf2;
+        pchMessageStart[2] = 0xc0;
+        pchMessageStart[3] = 0xef;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
-        vAlertPubKey = ParseHex("041ada49bc9d49bff5f122ffcdcda0d200beba8ea2a8db684e6ba408487fc3446dce2578c9841e9af5b9d94c1368901d2af765088b90beebc2f60c94d2b862ada3");
+        vAlertPubKey = ParseHex("0471dc165db490094d35cde15b1f5d755fa6ad6f2b5ed0f340e3f17f57389c3c2af113a8cbcc885bde73305a553b5640c83021128008ddf882e856336269080496");
         nDefaultPort = 25714;
         nRPCPort = 11333;
         strDataDir = "testnet";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 67775;
+        genesis.nNonce = 216178;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00004d8aac459350321f55cc0626da4460e068f9dc9a70a0081a9a911a27ec9d"));
+        //assert(hashGenesisBlock == uint256("0x0000724595fb3b9609d441cbfb9577615c292abf07d996d3edabc48de843642d"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 110);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 190);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 111);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);
         base58Prefixes[SECRET_KEY]     = std::vector<unsigned char>(1, 239);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
@@ -181,10 +182,10 @@ static CTestNetParams testNetParams;
 class CRegTestParams : public CTestNetParams {
 public:
     CRegTestParams() {
-        pchMessageStart[0] = 0xfb;
-        pchMessageStart[1] = 0xbc;
-        pchMessageStart[2] = 0xc5;
-        pchMessageStart[3] = 0xa2;
+        pchMessageStart[0] = 0xfa;
+        pchMessageStart[1] = 0xbf;
+        pchMessageStart[2] = 0xb5;
+        pchMessageStart[3] = 0xda;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 1);
         genesis.nTime = 1411111111;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();

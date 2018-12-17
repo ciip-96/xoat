@@ -92,7 +92,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
 #else
-    //setUnifiedTitleAndToolBarOnMac(false);
+    //setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
     // Accept D&D of URIs
@@ -427,6 +427,11 @@ void BitcoinGUI::createToolBars()
     foreach(QAction *action, toolbar->actions()) {
         toolbar->widgetForAction(action)->setFixedWidth(w);
     }
+}
+
+void BitcoinGUI::createInformationBar()
+{
+
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -797,7 +802,9 @@ void BitcoinGUI::incomingTransaction(const QModelIndex & parent, int start, int 
 
 void BitcoinGUI::gotoOverviewPage()
 {
+#ifndef WIN32
     centralLayout->setMargin(50);
+#endif
     overviewAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(overviewPage);
     exportAction->setEnabled(false);
@@ -806,7 +813,9 @@ void BitcoinGUI::gotoOverviewPage()
 
 void BitcoinGUI::gotoHistoryPage()
 {
+#ifndef WIN32
     centralLayout->setMargin(50);
+#endif
     historyAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(transactionsPage);
     exportAction->setEnabled(true);
@@ -816,7 +825,9 @@ void BitcoinGUI::gotoHistoryPage()
 
 void BitcoinGUI::gotoAddressBookPage()
 {
+#ifndef WIN32
     centralLayout->setMargin(50);
+#endif
     addressBookAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(addressBookPage);
 
@@ -827,7 +838,9 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
+#ifndef WIN32
     centralLayout->setMargin(50);
+#endif
     receiveCoinsAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(receiveCoinsPage);
     exportAction->setEnabled(true);
@@ -837,7 +850,9 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
+#ifndef WIN32
     centralLayout->setMargin(50);
+#endif
     sendCoinsAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(sendCoinsPage);
     exportAction->setEnabled(false);
@@ -892,7 +907,9 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-
+/*void BitcoinGUI::resizeEvent(QResizeEvent* event){
+    QMainWindow::resizeEvent(event);
+}*/
 void BitcoinGUI::handleURI(QString strURI)
 {
     // URI has to be valid

@@ -385,33 +385,11 @@
          <property name="enabled">
           <bool>false</bool>
          </property>
-         <property name="mouseTracking">
-          <bool>false</bool>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-	color: transparent;
-	background:transparent;
-}
-</string>
-         </property>
          <property name="text">
           <string>Use light visual theme (requires restart)</string>
          </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
          <property name="checked">
           <bool>true</bool>
-         </property>
-         <property name="tristate">
-          <bool>false</bool>
          </property>
         </widget>
        </item>

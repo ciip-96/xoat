@@ -281,16 +281,7 @@
              <enum>Qt::LeftToRight</enum>
             </property>
             <property name="styleSheet">
-             <string notr="true">QWidget{
-	background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop: 0 #bf2287, stop: 1 #f9b35c );
-	border-radius: 12px;
-}
-QFrame{
-	
-}
-QLabel{
-	background:none;
-}</string>
+             <string notr="true"/>
             </property>
             <layout class="QFormLayout" name="formLayout">
              <property name="sizeConstraint">

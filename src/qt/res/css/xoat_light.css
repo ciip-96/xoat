@@ -29,14 +29,15 @@
  *  background of tab menu list (overview, send, receive, etc).
  */
 
+
+
+
 QToolBar { 
     padding: 0px;
     margin: 0px;
     background-color: rgb(252, 252, 252) !important;
-    border: 2px solid qlineargradient(x1:0,y1:0,x2:1,y2:0, stop: 0 rgba(0,0,0,0.9) , stop: 1 rgba(0,0,0,0.3) );
-
 }
-QToolButton {
+QToolBar>QToolButton {
     background: none;
     border: none;
     border-left-color: rgb(255, 255, 255);
@@ -44,9 +45,10 @@ QToolButton {
     border-left-width: 6px;
     margin-top: 9px;
     margin-bottom: 9px;
+    /*icon-size: 48px, 48px;*/
 }
 
-QToolButton:checked {
+QToolBar>QToolButton:checked {
     color: rgb(134, 62, 101);
     border: none;
     border-left-color: rgb(245,138,16);
@@ -104,6 +106,10 @@ QPushButton:hover, QPushButton:focus {
     border: 2px solid rgb(234,124,0) !important;
     color: rgb(20, 20, 20);
 }
+QPushButton:disabled {
+    background: rgb(233, 201, 166);
+    border: 0px;
+}
 QPushButton:pressed {
     background: rgba(250, 133, 0, 0.3) !important;
     border: 2px solid rgb(250, 133, 0) !important;
@@ -129,6 +135,9 @@ QLineEdit {
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
 } /*label*/
+/*.QValidatedLineEdit:focus, .QLineEdit:focus { 
+    background-color:#6fff54;
+}*/ /* Take off focus glow*/
 QTextEdit {
     background: rgb(255, 255, 255);
     color: rgb(20, 20, 20);
@@ -230,6 +239,7 @@ QTreeView::item:selected {
 QTableView {
     background: rgba(200, 200, 200, 0);
     color: rgb(98, 98, 98);
+    border:none;/*bug fixed: linux and windows tableview border*/
 }
 QTableView::item{
     background: white;
@@ -238,7 +248,7 @@ QTableView::item{
     margin-left: 3px !important;
 }
 QTableView::item:selected {
-    background-color: rgb(0, 105, 217);
+    background-color: rgb(241,121,72);
     color: white;
 }
 
@@ -279,15 +289,87 @@ QHeaderView::up-arrow{
     margin-bottom: 3px;
 }
 
+/*
+ * General Calendar date picker (QCalendarWidget)
+*/
+
+/*day header row (mon,tue,wed...)*/
+QCalendarWidget QWidget {
+    color: black;
+    alternate-background-color: rgb(243, 137, 16);
+}
+/* normal days */
+QCalendarWidget QAbstractItemView:enabled
+{
+    font-size:20px;
+    color: rgb(20, 20, 20);
+    background-color: rgb(250,250,250);
+    selection-background-color: rgb(250, 133, 0);
+    selection-color: rgb(255, 255, 255);
+}
+
+/* navigation bar */
+QCalendarWidget QWidget#qt_calendar_navigationbar
+{
+    background-color: rgb(180,38,134);
+    /*background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);*/
+}
+/* days of another month*/
+QCalendarWidget QAbstractItemView:disabled
+{
+    color: rgb(128,128,128);
+}
+
+
+/*QCalendarWidget QToolButton {
+    height: 30px;
+    width: 30px;
+    color: white;
+    font-size: 24px;
+    icon-size: 50px, 50px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+}
+QCalendarWidget QMenu {
+    width: 150px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    background-color: rgb(100, 100, 100);
+}
+
+QCalendarWidget QSpinBox {
+    width: 150px;
+    font-size:24px;
+    color: white;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+    selection-background-color: rgb(136, 136, 136);
+    selection-color: rgb(255, 255, 255);
+}*/
+
+/*QCalendarWidget QSpinBox::up-button { subcontrol-origin: border; subcontrol-position: top right; width:65px; }
+QCalendarWidget QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right; width:65px;}
+QCalendarWidget QSpinBox::up-arrow { width:56px; height:56px; }
+QCalendarWidget QSpinBox::down-arrow { width:56px; height:56px; }
+*/
+
+
 /* 
  *  The container of the tableview and forms of receive, send, transactions address book pages
  *
 QFrame{
     padding:100px;
     text-align: center;
-}
+}*/
 
-Overview page*/
+
+/*
+    Overview page
+*/
+
+#widgetSpendableCard{
+   background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop: 0 #bf2287, stop: 1 #f9b35c );
+   border-radius: 12px;
+}
 
 #lblRecentTransactions{
     color: rgb(186,1,121);
@@ -309,7 +391,9 @@ Overview page*/
     border: 0px solid black;  /* This must be present in order to take effect*/
 }
 
-/*Send Coins and Address Book page*/
+/*
+    Send Coins and Address Book page
+*/
 #SendCoinsForm{
     background-color: rgb(250,250,250);
     border:1px solid rgba(20,20,20,0.6);
@@ -351,28 +435,48 @@ Overview page*/
     background-color: rgba(202, 28, 86, 0.3);
     border:none;
 }
+#showQRCode:disabled{
+    background-color: rgba(161, 81, 108, 0.3);
+}
 #signMessage:pressed, #verifyMessage:pressed{
     background-color: rgba(53, 128, 141, 0.3) !important;
     border: 2px solid rgb(53, 128, 141) !important;
     color: rgb(53, 128, 141) !important;
+}
+#signMessage:disabled, #verifyMessage:disabled{
+    background-color: rgba(65, 95, 100, 0.3) !important;
 }
 #deleteButton:pressed{
     background-color: rgba(214, 9, 23, 0.3);
     border: 2px solid rgb(214, 9, 23) !important;
     color: rgb(214, 9, 23) !important;
 }
+#deleteButton:disabled{
+    background-color: rgba(160, 63, 70, 0.3);
+}
 #sendButton:pressed{
     background-color: rgba(173, 36, 136, 0.3);
     border: 2px solid rgb(173, 36, 136) !important;
     color: rgb(173, 36, 136) !important;
 }
-
+#sendButton:disabled{
+    background-color: rgba(134, 88, 122, 0.3);
+}
 #addressBookButton, #pasteButton, #deleteEntryButton{
     border: 0px solid transparent !important;
     background-color:transparent !important;
     height: 32px !important;
     width: 32px !important;
-
+}
+#addressBookButton_VM, #addressBookButton_SM, #pasteButton_SM, #copySignatureButton_SM, #clearButton{
+    margin-left: 10px;
+    border: 0px solid transparent !important;
+    background-color:transparent !important;
+    width: 32px !important;
+}
+#widgetSpendableCard{
+    background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop: 0 #bf2287, stop: 1 #f9b35c );
+    border-radius: 12px;
 }
 
 /* Header tab type menus (inside popup dialogs) equivalent to NSTabView
@@ -396,3 +500,4 @@ QTabWidget::pane {
 }
 /*Loading blockchain network bottom progress bar*/
 /*the frarme of the view where the new page will be loaded*/
+

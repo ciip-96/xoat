@@ -51,6 +51,7 @@ protected:
     void closeEvent(QCloseEvent *event);
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
+    //void resizeEvent(QResizeEvent* event);
 
 private:
     ClientModel *clientModel;
@@ -114,6 +115,8 @@ private:
     void createToolBars();
     /** Create system tray (notification) icon */
     void createTrayIcon();
+    /** Create Information Top bar**/
+    void createInformationBar();
 
 public slots:
     /** Set number of connections shown in the UI */

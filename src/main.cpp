@@ -1021,8 +1021,8 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
             nActualSpacing = nTargetSpacing;
     }
     if (IsProtocolV3(pindexLast->nTime)) {
-        if (nActualSpacing > nTargetSpacing * 10)
-            nActualSpacing = nTargetSpacing * 10;
+        if (nActualSpacing > nTargetSpacing * 10/3)
+            nActualSpacing = nTargetSpacing * 10/3;
     }
 
     // ppcoin: target change every block

@@ -30,7 +30,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #ifdef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
     ui->addButton->setIcon(QIcon());
-    ui->clearButton->setIcon(QIcon());
+    ui->clearAll->setIcon(QIcon());
     ui->sendButton->setIcon(QIcon());
 #endif
 
@@ -43,7 +43,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     addEntry();
 
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
-    connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
+    connect(ui->clearAll, SIGNAL(clicked()), this, SLOT(clear()));
 
     // Coin Control
     ui->lineEditCoinControlChange->setFont(GUIUtil::bitcoinAddressFont());
