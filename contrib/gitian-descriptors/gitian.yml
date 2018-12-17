@@ -3,7 +3,7 @@ name: "xoat"
 suites:
 - "trusty"
 architectures:
-- "i386"
+#- "i386"
 - "amd64"
 packages: 
 - "libdb5.3++-dev"
